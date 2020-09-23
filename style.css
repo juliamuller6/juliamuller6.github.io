@@ -1,0 +1,142 @@
+body{
+    margin: 30px;
+    margin-bottom: 1.5cm;
+    padding: 0;
+    background: url(bg.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.entiers{
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 30px 30px 15px;
+    
+
+}
+
+.boutons{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+   
+}
+
+h3{
+    color:  #0bddd3;
+    font-size: 13pt;
+    font-family: poppins-bold, sans-serif;
+    padding-left: 0px;
+}
+
+.nom{
+    text-align: right;
+    color:  white;
+    font-size: 13pt;
+    font-family: poppins-bold, sans-serif;
+}
+
+.bouton{
+    background: linear-gradient(70deg, #6ce9d2, #1399e0);
+    font-family: poppins-bold, sans-serif;
+    color: white;
+    font-size: 13pt;
+    border: none;
+    outline: none;
+    padding: 10px 25px 10px 25px;
+    border-radius: 30px;
+    margin: 20px;
+}
+
+.message{
+    display: flex;
+    justify-content: space-around;
+}
+
+.message div{
+    border: none;
+}
+.bouton:hover{
+    box-shadow: inset -4px -4px 15px rgba(10, 28, 42, 0.6),
+                inset -4px -4px 15px rgba(10, 28, 42, 0.1);
+    cursor: pointer;
+}
+
+.bt{
+    text-align: center;
+}
+
+
+h1{
+    font-family: poppins-bold, sans-serif;
+    color: #0bddd3;
+    font-size: 30pt;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 30px;
+}
+
+h2{
+    font-family: poppins-bold, sans-serif;
+    color: white;
+    font-size: 22pt;
+    padding: 30px 30px 30px 15px;
+}
+
+.titre{
+    padding-top: 30px;
+    padding-bottom: 25px;
+    padding-left: 10px;
+    color:  #0bddd3;
+    font-size: 13pt;
+    font-family: poppins-bold, sans-serif;
+}
+
+.text{
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #0bddd3;
+    color:  #0bddd3;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 12pt;
+    font-family: poppins-bold, sans-serif;
+    width: 350px;
+}
+
+.text2{
+    background: none;
+    border: none;
+    outline: none;
+    border: 1px solid #0bddd3;
+    color:  #0bddd3;
+    padding: 20px;
+    font-size: 12pt;
+    font-family: poppins-bold, sans-serif;
+    width: 350px;
+}
+
+.text3{
+    background: none;
+    border: none;
+    outline: none;
+    border: 1px solid #0bddd3;
+    color:  #0bddd3;
+    padding: 20px;
+    font-size: 12pt;
+    font-family: poppins-bold, sans-serif;
+    width: 100px;
+    height: 70px;
+}
+
+::placeholder{
+    color:  #0bddd3;
+    opacity: 1;
+    text-transform: uppercase; 
+}
+
+
+

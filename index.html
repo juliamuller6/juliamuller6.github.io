@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partiel de Maths</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+    
+
+
+<body>
+
+                                                        <!--------------------->
+                                                        <!----- Partie 1 ------>
+                                                        <!--------------------->
+
+    <h1> partiel de maths - sujet 2</h1>
+
+    <h2>❯ Partie 1 : l'Algorithme d'Euclide</h2>
+
+    <form>
+        <h3> Veuillez entrer deux nombres entiers : </h3>
+        <div class="entiers">
+            <input class="text" type="text" id="nombreA" placeholder="Entier A"> 
+            <input class="text" type="text" id="nombreB" placeholder="Entier B"> 
+        </div>
+
+        <div class="boutons">
+            <input class="bouton" type="button" value="Calcul du PGCD" onclick="euclide()"> <input class="bouton" type="button" value="Bezout" onclick="bezout()"> <input class="bouton" type="button" value="Calcul PPCM" onclick="ppcm()"> <input class="bouton" type="button" value="Décomposition en facteurs premiers" onclick="fact()"> <br> <br>
+        </div>
+    </form>
+   
+    
+
+                                                        <!--------------------->
+                                                        <!----- Partie 2 ------>
+                                                        <!--------------------->
+
+    <h2>❯ Partie 2 : l'Algorithme de César</h2>
+        
+    <form>
+        <div>
+            <div class="message">
+                <div>
+                    <h3> Message à coder : </h3>
+                    <textarea class="text2" name=classique cols=60 rows=3>ENTREZ LE MESSAGE A CODER </textarea>
+                </div>
+
+                <div>
+                    <h3>Message encodé : </h3>
+                    <textarea class="text2" name=chiffre cols=60 rows=3></textarea>
+                </div>
+
+                <div>
+                    <h3>Décalage de : </h3> 
+                    <input class="text3" type="text" name="changement_chiffre" size="3" value="3">
+                </div>
+
+        </div>
+
+        <br> <br>
+
+        <div class="bt">
+            <input class="bouton" type="BUTTON" value="Chiffrer" onClick="Encodage(classique,changement_chiffre.value,chiffre)">
+    
+            <input class="bouton"type="BUTTON" value="Déchiffrer" onClick="Encodage(chiffre,26-changement_chiffre.value,classique)">                     
+        </div>
+    </form>
+
+    <div class="nom"> Julia MULLER - TP12</div>
+    
+
+<script>
+
+    var nombreA="";
+    var nombreB="";
+
+    function euclide(){
+    nombreA=document.getElementById('nombreA').value;
+        nombreB=document.getElementById('nombreB').value;
+    
+        if (nombreA>nombreB)
+        {
+            var num=0;
+            var etape="Calcul du PGCD de "+nombreA+" et de "+nombreB+" avec la méthode d'Euclide.\n L'entier A est supérieur à l'entier B donc :";
+            var etapeplus="";
+            var restes=[];
+
+            while (nombreB>0)
+            {
+                num=num+1;
+                etapeplus="Etape n°"+num+" : diviser "+nombreA+" par "+nombreB;
+                etape=etape+"\n"+etapeplus;
+                reste=nombreA%nombreB;
+                etapeplus="Le reste de cette division euclidienne est "+reste;
+                restes.push(reste);
+                etape=etape+"\n"+etapeplus;
+                alert(etape);
+                nombreA=nombreB;
+                nombreB=reste;
+            }
+            nombreA=document.getElementById('nombreA').value;
+            nombreB=document.getElementById('nombreB').value;
+            alert(etape+"\nLe reste est maintenant nul. \nDonc le PGCD("+nombreA+';'+nombreB+") est "+restes[num-2]);
+
+        }
+
+        if (nombreB>nombreA)
+        {
+            var num=0;
+            var etape="Calcul du PGCD de "+nombreA+" et de "+nombreB+" avec la méthode d'Euclide.\n L'entier B est supérieur à l'entier A donc :";
+            var etapeplus="";
+            var restes=[];
+
+            while (nombreA>0)
+            {
+                num=num+1;
+                etapeplus="Etape n°"+num+" : diviser "+nombreB+" par "+nombreA;
+                etape=etape+"\n"+etapeplus;
+                reste=nombreB%nombreA;
+                etapeplus="Le reste de la division euclidienne est "+reste;
+                restes.push(reste);
+                etape=etape+"\n"+etapeplus;
+                alert(etape);
+                nombreB=nombreA;
+                nombreA=reste;
+            }
+            nombreA=document.getElementById('nombreA').value;
+            nombreB=document.getElementById('nombreB').value;
+            alert(etape+"\nLe reste est  nul. \nDonc le PGCD("+nombreA+';'+nombreB+") est "+restes[num-2]);
+
+        }
+    }
+
+    function bezout(){
+    nombreA=document.getElementById('nombreA').value;
+    nombreB=document.getElementById('nombreB').value;
+    var u =1;
+    var v =0;
+    var x =0;
+    var y =1;
+    var num=0;
+    var etape = "Le Théorème de Bezout pour "+nombreA+" et "+nombreB;
+
+        while (nombreB>0){
+            num=num+1;
+            r=nombreA%nombreB;
+            q=(nombreA-r)/nombreB;
+            c=u;
+            d=v;
+            u=x;
+            v=y;
+            x=c-(q*x);
+            y=d-(q*y);
+            nombreA=nombreB;
+            nombreB=r;
+            etapeplus="Etape n°"+num+" : reste="+r+", quotient="+q+", u="+u+" et v="+v;
+            etape=etape+"\n"+etapeplus;
+            alert(etape);
+        }
+        nombreA=document.getElementById('nombreA').value;
+        nombreB=document.getElementById('nombreB').value;
+        etapeplus="\nDonc "+nombreA+" x "+u+" + "+nombreB+" x "+v+" = 1"
+        alert(etape+etapeplus);
+    }
+
+    function ppcm(){
+    nombreA=document.getElementById('nombreA').value;
+    nombreB=document.getElementById('nombreB').value; 
+        
+        if (nombreA>nombreB)
+        {
+            var num=0;
+            var restes=[];
+            var pgcd="";
+
+            while (nombreB>0)
+            {
+                reste=nombreA%nombreB;
+                restes.push(reste);
+                nombreA=nombreB;
+                nombreB=reste;
+            }
+            nombreA=document.getElementById('nombreA').value;
+            nombreB=document.getElementById('nombreB').value;
+            pgcd=restes[num];
+        }
+
+        if (nombreB>nombreA)
+        {
+            var num=0;
+            var restes=[];
+            var pgcd="";
+
+            while (nombreA>0)
+            {
+                reste=nombreB%nombreA;
+                restes.push(reste);
+                nombreB=nombreA;
+                nombreA=reste;
+            }
+            nombreA=document.getElementById('nombreA').value;
+            nombreB=document.getElementById('nombreB').value;
+            pgcd=restes[num];
+        }
+        
+        var ppcm=(nombreA*nombreB)/pgcd;
+        alert ("Le PPCM de "+nombreA+" et de "+nombreB+" est "+ppcm);
+    }
+
+    function fact(){
+    nombreA=document.getElementById('nombreA').value;
+    nombreB=document.getElementById('nombreB').value;
+
+        if (nombreA!=0){
+        var d=2;
+        var c=1;
+        var i=1;
+        var liste=[];
+        var etape="La décomposition en facteurs premiers de "+nombreA+" :\n "+nombreA+"= 1";
+        alert(etape);
+        while ((d*d)<=nombreA){
+            if (((nombreA/d)-Math.trunc(nombreA/d))==0){
+                liste.push(d);
+                i=i+1;
+                nombreA=nombreA/d;
+            }
+            else{
+                d=d+c
+                c=2;
+            }
+        }
+        liste.push(nombreA);
+        for (var k = 0; k < liste.length; k++){
+            etape=etape+"x"+liste[k];
+            alert(etape);
+        }
+        etape=etape+"\nFin";
+        alert(etape);
+        }
+
+        if (nombreB!=0){
+        var d=2;
+        var c=1;
+        var i=1;
+        var liste2=[];
+        var etape="La décomposition en facteurs premiers de "+nombreB+" :\n "+nombreB+"= 1";
+        alert(etape);
+        while ((d*d)<=nombreB){
+            if (((nombreB/d)-Math.trunc(nombreB/d))==0){
+                liste2.push(d);
+                i=i+1;
+                nombreB=nombreB/d;
+            }
+            else{
+                d=d+c
+                c=2;
+            }
+        }
+        liste2.push(nombreB);
+        for (var k = 0; k < liste2.length; k++){
+            etape=etape+"x"+liste2[k];
+            alert(etape);
+        }
+        etape=etape+"\nFin";
+        alert(etape);
+        }
+    }
+
+</script>
+
+
+
+<script>
+
+    function Encodage(classique, changement_chiffre, chiffre) {
+        Lettre = 'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        classique.value = classique.value.toUpperCase();
+        k = parseInt(changement_chiffre);
+        while (k < 0) { k += 26 };
+        while (k > 25) { k -= 26 };
+        n = 0;
+        chiffre.value = "";
+        for (var count = 0; count < classique.value.length; count++) {
+            alpha = classique.value.charAt(count);
+            idx = Lettre.indexOf(alpha);
+            if (idx > -1)  
+            {
+                if ((n % 0 == 0) && (n > 0)) { chiffre.value += " " };
+                n++;
+                chiffre.value += Lettre.charAt(idx + k);
+            }
+        }
+    }
+
+    function Plus(changement_chiffre) {
+        k = parseInt(changement_chiffre.value);
+        k++;
+        if (k > 25) { k -= 26 };
+        changement_chiffre.value = k;
+    }
+
+    function cadenas(reponse) {
+        if (reponse.charAt(6) == 4) { document.location = "../corriges/" + reponse + ".html" }
+        else
+            document.location = "../corriges/" + reponse + ".nb"
+    }
+
+
+    function Moins(changement_chiffre) {
+        k = parseInt(changement_chiffre.value);
+        k--;
+        if (k < 0) { k += 26 };
+        changement_chiffre.value = k;
+    }
+
+</script>
+
+</body>
+</html>
+
