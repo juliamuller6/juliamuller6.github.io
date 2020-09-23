@@ -1,8 +1,10 @@
+*{
+    background-color: #0a1d29;;
+}
 body{
     margin: 30px;
     margin-bottom: 1.5cm;
     padding: 0;
-    background-color: #0a1d29;
     background: url(bg.png) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
